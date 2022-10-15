@@ -1,12 +1,10 @@
 const express = require('express');
 const User = require('../models/user');
 const passport = require('passport');
-const user = require('../models/user');
 const authenticate = require('../authenticate');
 
 const router = express.Router();
 
-/* GET users listing. */
 router.get('/', authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
 	User.find()
 		.then((users) => {
